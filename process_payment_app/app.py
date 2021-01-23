@@ -1,6 +1,12 @@
 from datetime import datetime
 from api_engine import *
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+import stripe
+# This is your real test secret API key.
+stripe.api_key = 'sk_test_51ICX9HIJShQdB54vu4C3PnBO6GPbXi5Nq55PjVJb08FDiVdXXLL8kFfR7cK3NPROJSfKQDWtVoTHAmUgA6PvKoSy00fiSCXYW5'
+public_key = "pk_test_51ICX9HIJShQdB54vRhPcrp7gJLX5vAEjhzDFZIdVZF51O0PVc0lBTzxYSMwA8IrqfDDLbT3P7fRtOhWNLKfiniQP000aJFK3HU"
+
+
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -48,38 +54,26 @@ def cheapPayment():
     return render_template("cheapPayment.html", amount = amount)
 
 
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+    session = stripe.checkout.Session.create(
+    payment_method_types=['card'],
+    line_items=[{
+      'price_data': {
+        'currency': 'usd',
+        'product_data': {
+          'name': 'Card Payment',
+        },
+        'unit_amount': _getAmount.amount*100,
+      },
+      'quantity': 1,
+    }],
+    mode='payment',
+    success_url=url_for('success'),
+    cancel_url=url_for('failed'),
+    )
 
-
-@app.route('/stripe-gateway', methods=['POST'])
-def stripe():
-    CheapPaymentGateway()
-    try:
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[
-                {
-                    'price_data': {
-                        'currency': 'gbp',
-                        'unit_amount': _getAmount.amount*100,
-                        'product_data': {
-                            'name': 'Card Payment',
-                            'images': ['https://www.pngitem.com/pimgs/m/13-130963_payment-method-png-transparent-images-payment-methods-icons.png'],
-                        },
-                    },
-                    'quantity': 1,
-                },
-            ],
-            mode='payment',
-            # success_url=YOUR_DOMAIN + '/success.html',
-            # cancel_url=YOUR_DOMAIN + '/cancel.html',
-            success_url=url_for('success'),
-            cancel_url=url_for('failed'),
-
-
-        )
-        return jsonify({'id': checkout_session.id})
-    except Exception as e:
-        return jsonify(error=str(e)), 403
+    return jsonify(id=session.id)
 
 
 

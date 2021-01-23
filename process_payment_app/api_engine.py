@@ -80,8 +80,9 @@ def ExpensivePaymentGateway():
 
 
 def CheapPaymentGateway():
+	pass
 	# implement Stripe Api
-	stripe.api_key = 'sk_test_51ICX9HIJShQdB54vu4C3PnBO6GPbXi5Nq55PjVJb08FDiVdXXLL8kFfR7cK3NPROJSfKQDWtVoTHAmUgA6PvKoSy00fiSCXYW5'
+	# stripe.api_key = 'sk_test_51ICX9HIJShQdB54vu4C3PnBO6GPbXi5Nq55PjVJb08FDiVdXXLL8kFfR7cK3NPROJSfKQDWtVoTHAmUgA6PvKoSy00fiSCXYW5'
 
 
 # test = Payment()
