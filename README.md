@@ -1,9 +1,9 @@
 # Process-Payment-App
 
 ### This is a Flask web app that makes payment with 3 different Payment Gateways:
-  - Braintree's API (Allows PayPal and Other Credit/Debit Cards)
-  - Stripe API
-  - Square API
+  - ExpensivePaymentGateway -> Braintree's API (Allows PayPal and Other Credit/Debit Cards)
+  - CheapPaymentGateway -> Stripe API
+  - PremiumPaymentGateway -> Square API
   
   Each of these gateways are called based on the amount of payment in GBP to be made.
   
@@ -27,3 +27,10 @@
 - Install the dependencies from requirements.txt file with pip like so;
   - python -m pip install requirements.txt
 - Run the server with python app.py
+
+### Major Endpoints
+  - /                 -> This is the default homepage 
+  - /paypal-gateway   -> This calls the ExpensivePaymentGateway method, which is Braintree's API
+  - /cheapPayment     -> This calls the CheapPaymentGateway method, which is Stripe API
+  - /square-gateway   -> This calls the PremiumPaymentGateway method, which is Square's API
+    - under_construction
