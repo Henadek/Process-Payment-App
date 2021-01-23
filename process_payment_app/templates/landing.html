@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+
+  
+
+</head>
+
+<body>
+  <div class="pagepic text-center">
+    <h1 id="heading">Process Payment App</h1>
+  </div>  
+
+  <div class="container my-4 text-center">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Enter an Amount</h5>
+        <form action="/getamount" method="post">
+          <label class ="card-text" for="amount" style="padding-top: 2%;padding-bottom: 3%;">
+            <!-- <span class="input-label">Amount</span> -->
+            <div class="input-wrapper amount-wrapper">
+              <input id="amount" name="amount" type="number" min="1" placeholder="£ 0">
+
+            </div>
+          </label>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Next</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+</html>
