@@ -6,7 +6,12 @@
   - Square API
   
   Each of these gateways are called based on the amount of payment in GBP to be made.
-
+  
+  For testing the payment, you can use any of the following Test Cards:
+  - 5555555555554444 (for Mastercard)
+  - 4111111111111111 (for Visa)
+  - 371449635398431 (for American Express)
+  You can choose any 3 digit value for the CVV and any date in the future for the Expiry Date.
 
 
 ### Instructions to install the app:
